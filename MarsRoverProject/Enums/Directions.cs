@@ -1,4 +1,4 @@
-﻿namespace MarsRoverProject
+﻿namespace MarsRoverProject.Enums
 {
     public enum Direction
     {
