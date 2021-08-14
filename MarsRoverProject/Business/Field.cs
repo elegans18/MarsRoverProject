@@ -56,21 +56,30 @@ namespace MarsRoverProject.Business
             if (roverX > fieldLimitX)
             {
                 Rover.LocationX = fieldLimitX;
+                FieldLimitCrossing();
             }
             else if (roverX < 0)
             {
                 Rover.LocationX = 0;
+                FieldLimitCrossing();
             }
 
             //Check Rover is outside of Y plane
             if (roverY > fieldLimitY)
             {
                 Rover.LocationY = fieldLimitY;
+                FieldLimitCrossing();
             }
             else if (roverY < 0)
             {
                 Rover.LocationY = 0;
+                FieldLimitCrossing();
             }
+        }
+
+        public void FieldLimitCrossing()
+        {
+            Console.WriteLine("You can't cross the field limits. Your move is cancelled.");
         }
     }
 }

@@ -6,5 +6,7 @@
         int FieldLimitY { get; set; }
 
         void CheckFieldLimits(IRover Rover);
+
+        void FieldLimitCrossing();
     }
 }

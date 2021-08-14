@@ -90,6 +90,7 @@ namespace MarsRoverProject.Business
             }
         }
 
+        //Read movement data and execute
         public void ExploreSurface()
         {
             foreach (var moveType in MovementText)
@@ -105,6 +106,10 @@ namespace MarsRoverProject.Business
                 else if (moveType == 'M')
                 {
                     rover.MoveForward();
+                }
+                else
+                {
+                    throw new Exception("Invalid move type.");
                 }
 
                 field.CheckFieldLimits(rover);

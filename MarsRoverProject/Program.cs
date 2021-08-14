@@ -34,7 +34,7 @@ namespace MarsRoverProject
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Rover 1 Explore : ", ex.Message);
+                Console.WriteLine("Rover 2 Explore : ", ex.Message);
                 throw;
             }
         }
