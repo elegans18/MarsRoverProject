@@ -67,7 +67,29 @@ namespace MarsRoverProject.Business
 
         public void ExploreSurface()
         {
+            foreach (var moveType in MovementText)
+            {
+                if (moveType == 'L')
+                {
+                    Rover.TurnLeft();
+                }
+                else if (moveType == 'R')
+                {
+                    Rover.TurnRight();
+                }
+                else if (moveType == 'M')
+                {
+                    Rover.MoveForward();
+                }
 
+                Field.CheckFieldLimits(Rover);
+            }
+        }
+
+        public void PrintResults()
+        {
+            string finalLocation = Rover.GetCurrentRoverInfo();
+            Console.WriteLine(finalLocation);
         }
     }
 }

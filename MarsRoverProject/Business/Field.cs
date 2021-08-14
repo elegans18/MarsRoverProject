@@ -7,7 +7,7 @@ using MarsRoverProject.Interfaces;
 
 namespace MarsRoverProject.Business
 {
-    class Field : IField
+    public class Field : IField
     {
         public int FieldLimitX
         {

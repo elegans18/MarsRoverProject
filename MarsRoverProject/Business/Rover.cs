@@ -8,7 +8,7 @@ using MarsRoverProject.Interfaces;
 
 namespace MarsRoverProject.Business
 {
-    class Rover : IRover
+    public class Rover : IRover
     {
         public int LocationX
         {
@@ -125,6 +125,12 @@ namespace MarsRoverProject.Business
             {
                 //Exception
             }
+        }
+
+        public string GetCurrentRoverInfo()
+        {
+            string result = $"{LocationX} {LocationY} {CurrentDirection}";
+            return result;
         }
     }
 }

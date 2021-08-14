@@ -11,5 +11,6 @@ namespace MarsRoverProject.Interfaces
         public void TurnRight();
         public void TurnLeft();
         public void MoveForward();
+        public string GetCurrentRoverInfo();
     }
 }
