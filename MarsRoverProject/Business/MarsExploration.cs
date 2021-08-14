@@ -4,7 +4,7 @@ using MarsRoverProject.Interfaces;
 
 namespace MarsRoverProject.Business
 {
-    public class MarsExploration
+    public class MarsExploration : IPlanetExploration
     {
         private IRover rover;
         private IField field;
