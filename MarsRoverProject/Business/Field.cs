@@ -55,21 +55,21 @@ namespace MarsRoverProject.Business
             //Check Rover is outside of X plane
             if (roverX > fieldLimitX)
             {
-                roverX = fieldLimitX;
+                Rover.LocationX = fieldLimitX;
             }
             else if (roverX < 0)
             {
-                roverX = 0;
+                Rover.LocationX = 0;
             }
 
             //Check Rover is outside of Y plane
             if (roverY > fieldLimitY)
             {
-                roverY = fieldLimitY;
+                Rover.LocationY = fieldLimitY;
             }
             else if (roverY < 0)
             {
-                roverY = 0;
+                Rover.LocationY = 0;
             }
         }
     }

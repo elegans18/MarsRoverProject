@@ -33,7 +33,7 @@ namespace MarsRoverProject.Business
             }
         }
 
-        public Direction CurrentDirection
+        public Directions CurrentDirection
         {
             get
             {
@@ -48,7 +48,7 @@ namespace MarsRoverProject.Business
         private int locationX;
         private int locationY;
 
-        private Direction currentDirection;
+        private Directions currentDirection;
 
         public Rover()
         {
@@ -57,79 +57,81 @@ namespace MarsRoverProject.Business
 
         public void TurnRight()
         {
-            if (currentDirection == Direction.North)
+            if (currentDirection == Directions.North)
             {
-                currentDirection = Direction.East;
+                currentDirection = Directions.East;
             }
-            else if (currentDirection == Direction.South)
+            else if (currentDirection == Directions.South)
             {
-                currentDirection = Direction.West;
+                currentDirection = Directions.West;
             }
-            else if (currentDirection == Direction.West)
+            else if (currentDirection == Directions.West)
             {
-                currentDirection = Direction.North;
+                currentDirection = Directions.North;
             }
-            else if (currentDirection == Direction.East)
+            else if (currentDirection == Directions.East)
             {
-                currentDirection = Direction.South;
+                currentDirection = Directions.South;
             }
             else
             {
-                //Exception
+                throw new Exception("Current direction is invalid.");
             }
         }
 
         public void TurnLeft()
         {
-            if (currentDirection == Direction.North)
+            if (currentDirection == Directions.North)
             {
-                currentDirection = Direction.West;
+                currentDirection = Directions.West;
             }
-            else if (currentDirection == Direction.South)
+            else if (currentDirection == Directions.South)
             {
-                currentDirection = Direction.East;
+                currentDirection = Directions.East;
             }
-            else if (currentDirection == Direction.West)
+            else if (currentDirection == Directions.West)
             {
-                currentDirection = Direction.South;
+                currentDirection = Directions.South;
             }
-            else if (currentDirection == Direction.East)
+            else if (currentDirection == Directions.East)
             {
-                currentDirection = Direction.North;
+                currentDirection = Directions.North;
             }
             else
             {
-                //Exception
+                throw new Exception("Current direction is invalid.");
             }
         }
 
         public void MoveForward()
         {
-            if (currentDirection == Direction.North)
+            if (currentDirection == Directions.North)
             {
                 locationY++;
             }
-            else if (currentDirection == Direction.South)
+            else if (currentDirection == Directions.South)
             {
                 locationY--;
             }
-            else if (currentDirection == Direction.West)
+            else if (currentDirection == Directions.West)
             {
                 locationX--;
             }
-            else if (currentDirection == Direction.East)
+            else if (currentDirection == Directions.East)
             {
                 locationX++;
             }
             else
             {
-                //Exception
+                throw new Exception("Current direction is invalid.");
             }
         }
 
         public string GetCurrentRoverInfo()
         {
-            string result = $"{LocationX} {LocationY} {CurrentDirection}";
+            Direction direction = new Direction();
+            string roverDirection = direction.GetShortDirect(CurrentDirection);
+            string result = $"{LocationX} {LocationY} {roverDirection}";
             return result;
         }
     }

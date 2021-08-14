@@ -1,6 +1,6 @@
 ﻿namespace MarsRoverProject.Enums
 {
-    public enum Direction
+    public enum Directions
     {
         North,
         South,

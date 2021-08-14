@@ -6,25 +6,49 @@ namespace MarsRoverProject.Business
 {
     public class MarsExploration
     {
-        private IRover Rover;
-        private IField Field;
+        private IRover rover;
+        private IField field;
 
         private string MovementText;
         private string RoverInput;
         private string FieldInput;
 
-        public MarsExploration(string movementText, string roverInput, string fieldInput)
+        public IRover Rover
+        {
+            get
+            {
+                return rover;
+            }
+            set
+            {
+                rover = value;
+            }
+        }
+
+        public IField Field
+        {
+            get
+            {
+                return field;
+            }
+            set
+            {
+                field = value;
+            }
+        }
+
+        public MarsExploration(string fieldInput, string roverInput, string movementText)
         {
             MovementText = movementText;
             RoverInput = roverInput;
             FieldInput = fieldInput;
-            InitData();
+            Init();
         }
 
-        private void InitData()
+        private void Init()
         {
-            Rover = CreateRover();
-            Field = CreateField();
+            field = CreateField();
+            rover = CreateRover();
         }
 
         private IRover CreateRover()
@@ -35,6 +59,7 @@ namespace MarsRoverProject.Business
             rover.LocationX = Convert.ToInt32(roverInpArray[0]);
             rover.LocationY = Convert.ToInt32(roverInpArray[1]);
             rover.CurrentDirection = GetDirection(roverInpArray[2]);
+            field.CheckFieldLimits(rover);
             return rover;
         }
 
@@ -45,20 +70,20 @@ namespace MarsRoverProject.Business
             int FieldLimitX = Convert.ToInt32(fieldInputArray[0]);
             int FieldLimitY = Convert.ToInt32(fieldInputArray[1]);
 
-            IField field = new Field(FieldLimitX, FieldLimitY);
-            return field;
+            IField _field = new Field(FieldLimitX, FieldLimitY);
+            return _field;
         }
 
-        private Direction GetDirection(string directionText)
+        private Directions GetDirection(string directionText)
         {
             if (directionText == "N")
-                return Direction.North;
+                return Directions.North;
             else if (directionText == "S")
-                return Direction.South;
+                return Directions.South;
             else if (directionText == "W")
-                return Direction.West;
+                return Directions.West;
             else if (directionText == "E")
-                return Direction.East;
+                return Directions.East;
             else
             {
                 throw new Exception("Direction input is not valid.");
@@ -71,24 +96,24 @@ namespace MarsRoverProject.Business
             {
                 if (moveType == 'L')
                 {
-                    Rover.TurnLeft();
+                    rover.TurnLeft();
                 }
                 else if (moveType == 'R')
                 {
-                    Rover.TurnRight();
+                    rover.TurnRight();
                 }
                 else if (moveType == 'M')
                 {
-                    Rover.MoveForward();
+                    rover.MoveForward();
                 }
 
-                Field.CheckFieldLimits(Rover);
+                field.CheckFieldLimits(rover);
             }
         }
 
         public void PrintResults()
         {
-            string finalLocation = Rover.GetCurrentRoverInfo();
+            string finalLocation = rover.GetCurrentRoverInfo();
             Console.WriteLine(finalLocation);
         }
     }
