@@ -5,6 +5,6 @@
         public int FieldLimitX { get; set; }
         public int FieldLimitY { get; set; }
 
-        void CheckFieldLimits(IRover Rover);
+        public void CheckFieldLimits(IRover Rover);
     }
 }

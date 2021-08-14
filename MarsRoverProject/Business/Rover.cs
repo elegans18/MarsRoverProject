@@ -50,6 +50,11 @@ namespace MarsRoverProject.Business
 
         private Direction currentDirection;
 
+        public Rover()
+        {
+
+        }
+
         public void TurnRight()
         {
             if (currentDirection == Direction.North)
@@ -119,22 +124,6 @@ namespace MarsRoverProject.Business
             else
             {
                 //Exception
-            }
-        }
-
-        public void CheckFieldLimits()
-        {
-            if (locationX < 0)
-            {
-                locationX = 0;
-            }
-            else if (locationX > 0)
-            {
-                locationY = 0;
-            }
-            if (locationY < 0)
-            {
-                locationY = 0;
             }
         }
     }
